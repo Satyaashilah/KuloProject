@@ -50,11 +50,27 @@ const LoginScreenProps = ({navigation}) => {
 
       <View style={styles.itemCol}>
         <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'envelope']} />
+          <FontAwesomeIcon icon={['fas', 'user']} />
           <TextInput
             value={email}
             style={styles.kotak}
-            placeholder="Masukkan Email"
+            placeholder="Nama Lengkap"
+          />
+        </View>
+        <View style={styles.itemRow}>
+          <FontAwesomeIcon icon={['fas', 'envelope']} />
+          <TextInput
+            value={password}
+            style={styles.kotak}
+            placeholder="Email"
+          />
+        </View>
+        <View style={styles.itemRow}>
+          <FontAwesomeIcon icon={['fas', 'phone']} />
+          <TextInput
+            value={password}
+            style={styles.kotak}
+            placeholder="Nomor Telepon"
           />
         </View>
         <View style={styles.itemRow}>
@@ -62,16 +78,25 @@ const LoginScreenProps = ({navigation}) => {
           <TextInput
             value={password}
             style={styles.kotak}
-            placeholder="Masukkan Password"
+            placeholder="Kata Sandi"
+          />
+        </View>
+        <View style={styles.itemRow}>
+          <FontAwesomeIcon icon={['fas', 'lock']} />
+          <TextInput
+            value={password}
+            style={styles.kotak}
+            placeholder="Verifikasi Kata Sandi"
           />
         </View>
       </View>
+
       <TouchableOpacity onPress={() => login()} style={styles.kotak}>
-        <Text>MASUK</Text>
+        <Text>DAFTAR</Text>
       </TouchableOpacity>
       <View style={styles.itemRow}>
         <Text>Sudah memiliki akun? </Text>
-        <TouchableOpacity onPress={() => console.log(1)}>
+        <TouchableOpacity onPress={() => login()}>
           <Text> Masuk disini</Text>
         </TouchableOpacity>
       </View>
@@ -94,6 +119,7 @@ const styles = StyleSheet.create({
   itemRow: {
     flexDirection: 'row',
   },
+  icon: {},
   kotak: {
     height: verticalScale(50),
     width: horizontalScale(330),

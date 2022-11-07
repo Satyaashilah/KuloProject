@@ -1,3 +1,7 @@
-// import BottomNavBar from './BottomNavBar';
+import BottomNav from './BottomNav';
+import Banner from './Banner';
+import SaldoKecil from './SaldoKecil';
 
-// export {BottomNavBar};
+export {SaldoKecil};
+export {Banner};
+export {BottomNav};
