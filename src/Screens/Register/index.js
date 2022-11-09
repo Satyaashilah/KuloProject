@@ -3,15 +3,18 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconBrand from '@fortawesome/free-brands-svg-icons';
+import {CustomButton} from '../../components';
+import {CustomInput} from '../../components';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   View,
   Text,
   Image,
   StatusBar,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {
   horizontalScale,
@@ -29,84 +32,120 @@ let iconListBrand = Object.keys(IconBrand)
 
 library.add(...iconListBrand, ...iconListSolid);
 
-const LoginScreenProps = ({navigation}) => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordRepeat, setPasswordRepeat] = useState('');
+  const [user, setUser] = useState('');
+  const [phone, setPhone] = useState('');
 
-  const login = () => navigation.navigate('Login');
+  const navigation = useNavigation();
+
+  const onSignUpPressed = () => {
+    console.warn('onSignUpPressed');
+
+    navigation.navigate('Login');
+  };
+  const onSignInPressed = () => {
+    console.warn('onSignInPressed');
+
+    navigation.navigate('Login');
+  };
 
   return (
-    <View style={{flex: 1, backgroundColor: '#dbe4f3'}}>
-      <StatusBar backgroundColor={'#dde4f3'} barstyle="dark-content" />
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Image
-          source={require('./../../images/coupon.png')}
-          style={{width: 100, height: 100}}
-        />
+    <ScrollView>
+      <View style={styles.root}>
+        <StatusBar backgroundColor={'#F1592A'} barstyle="dark-content" />
+        <View style={styles.root2}>
+          <Image
+            source={require('./../../images/kurirlokal.png')}
+            style={styles.logo}
+          />
 
-        <Text style={styles.text}>Kulo Merchant</Text>
-        <Text style={{marginTop: 10, fontWeight: 'bold'}}>Register</Text>
-      </View>
+          <Text style={styles.text}>Kulo Merchant</Text>
+          <Text style={{marginTop: 10, fontWeight: 'bold'}}>Register</Text>
+        </View>
 
-      <View style={styles.itemCol}>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'user']} />
-          <TextInput
-            value={email}
-            style={styles.kotak}
-            placeholder="Nama Lengkap"
-          />
-        </View>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'envelope']} />
-          <TextInput
-            value={password}
-            style={styles.kotak}
-            placeholder="Email"
-          />
-        </View>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'phone']} />
-          <TextInput
-            value={password}
-            style={styles.kotak}
-            placeholder="Nomor Telepon"
-          />
-        </View>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'lock']} />
-          <TextInput
-            value={password}
-            style={styles.kotak}
-            placeholder="Kata Sandi"
-          />
-        </View>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'lock']} />
-          <TextInput
-            value={password}
-            style={styles.kotak}
-            placeholder="Verifikasi Kata Sandi"
-          />
-        </View>
-      </View>
+        <View style={styles.itemCol}>
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'user']} />
+            <CustomInput
+              placeholder="Nama Pengguna"
+              value={user}
+              setValue={setUser}
+            />
+          </View>
 
-      <TouchableOpacity onPress={() => login()} style={styles.kotak}>
-        <Text>DAFTAR</Text>
-      </TouchableOpacity>
-      <View style={styles.itemRow}>
-        <Text>Sudah memiliki akun? </Text>
-        <TouchableOpacity onPress={() => login()}>
-          <Text> Masuk disini</Text>
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'envelope']} />
+            <CustomInput
+              placeholder="Email"
+              value={email}
+              setValue={setEmail}
+            />
+          </View>
+
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'phone']} />
+            <CustomInput
+              placeholder="Nomor Telepon"
+              value={phone}
+              setValue={setPhone}
+            />
+          </View>
+
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'lock']} />
+            <CustomInput
+              placeholder="Kata Sandi"
+              value={password}
+              setValue={setPassword}
+              secureTextEntry={true}
+            />
+          </View>
+
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'lock']} />
+            <CustomInput
+              placeholder="Ulangi Kata Sandi"
+              value={passwordRepeat}
+              setValue={setPasswordRepeat}
+              secureTextEntry={true}
+            />
+          </View>
+        </View>
+
+        <TouchableOpacity>
+          <CustomButton text="DAFTAR" onPress={onSignUpPressed} />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <CustomButton
+            text="Login"
+            onPress={onSignInPressed}
+            type="TERTIARY"
+          />
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
-export default LoginScreenProps;
+export default Register;
 
 const styles = StyleSheet.create({
+  root: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    backgroundColor: '#ffffff',
+    marginVertical: verticalScale(25),
+  },
+  root2: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+  },
   text: {
     fontSize: verticalScale(20),
     fontWeight: 'bold',
@@ -119,14 +158,10 @@ const styles = StyleSheet.create({
   itemRow: {
     flexDirection: 'row',
   },
-  icon: {},
-  kotak: {
-    height: verticalScale(50),
-    width: horizontalScale(330),
-    backgroundColor: '#FFFFFF',
-    borderRadius: moderateScale(3),
-    marginVertical: verticalScale(10),
-    justifyContent: 'center', //Centered vertically
-    alignItems: 'center', // Centered horizontally
+  logo: {
+    height: verticalScale(70),
+    width: horizontalScale(150),
+    maxHeight: verticalScale(70),
+    maxWidth: horizontalScale(150),
   },
 });

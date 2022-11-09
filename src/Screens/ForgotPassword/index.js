@@ -10,9 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 import {
   View,
   Text,
-  Image,
   StatusBar,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -32,65 +30,58 @@ let iconListBrand = Object.keys(IconBrand)
 
 library.add(...iconListBrand, ...iconListSolid);
 
-const LoginScreenProps = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigation = useNavigation();
   const onSignInPressed = () => {
     console.warn('onSignInPressed');
 
-    navigation.navigate('Register');
+    navigation.navigate('Login');
   };
-  const onForgotPressed = () => {
-    console.warn('onForgotPressed');
+  const onSubmitPressed = () => {
+    console.warn('onSignInPressed');
 
-    navigation.navigate('ConfirmEmail');
+    navigation.navigate('NewPassword');
   };
+
+  useEffect(() => {
+    console.log(CustomButton);
+  }, []);
 
   return (
     <View style={styles.root}>
       <StatusBar backgroundColor={'#F1592A'} barstyle="dark-content" />
       <View style={styles.root2}>
-        <Image
-          source={require('./../../images/kurirlokal.png')}
-          style={styles.logo}
-        />
-        <Text style={{marginTop: 10, fontWeight: 'bold'}}>Login</Text>
-      </View>
+        <Text style={{marginTop: 10, fontWeight: 'bold'}}>Lupa Kata Sandi</Text>
 
-      <View style={styles.itemCol}>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'envelope']} />
-          <CustomInput placeholder="Email" value={email} setValue={setEmail} />
+        <View style={styles.itemCol}>
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'envelope']} />
+            <CustomInput
+              placeholder="Email"
+              value={email}
+              setValue={setEmail}
+            />
+          </View>
         </View>
 
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'lock']} />
-          <CustomInput
-            placeholder="Kata Sandi"
-            value={password}
-            setValue={setPassword}
-            secureTextEntry={true}
+        <TouchableOpacity>
+          <CustomButton text="Submit" onPress={onSubmitPressed} />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <CustomButton
+            text="Kembali Ke Halaman Login"
+            onPress={onSignInPressed}
+            type="TERTIARY"
           />
-        </View>
+        </TouchableOpacity>
       </View>
-
-      <TouchableOpacity>
-        <CustomButton text="MASUK" onPress={onSignInPressed} />
-      </TouchableOpacity>
-
-      <TouchableOpacity>
-        <CustomButton
-          text="Lupa Kata Sandi"
-          onPress={onForgotPressed}
-          type="TERTIARY"
-        />
-      </TouchableOpacity>
     </View>
   );
 };
 
-export default LoginScreenProps;
+export default ForgotPassword;
 
 const styles = StyleSheet.create({
   root: {
@@ -98,7 +89,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     backgroundColor: '#ffffff',
-    marginVertical: verticalScale(25),
   },
   root2: {
     alignItems: 'center',
@@ -116,21 +106,5 @@ const styles = StyleSheet.create({
   },
   itemRow: {
     flexDirection: 'row',
-  },
-  logo: {
-    height: verticalScale(70),
-    width: horizontalScale(150),
-    maxHeight: verticalScale(70),
-    maxWidth: horizontalScale(150),
-  },
-  kotak: {
-    height: verticalScale(50),
-    width: horizontalScale(280),
-    borderColor: '#DEDEDE',
-    borderWidth: horizontalScale(0.5),
-    borderRadius: moderateScale(3),
-    marginVertical: verticalScale(10),
-    justifyContent: 'center', //Centered vertically
-    alignItems: 'center', // Centered horizontally
   },
 });

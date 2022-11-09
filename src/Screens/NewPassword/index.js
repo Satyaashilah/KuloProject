@@ -10,7 +10,6 @@ import {useNavigation} from '@react-navigation/native';
 import {
   View,
   Text,
-  Image,
   StatusBar,
   TextInput,
   StyleSheet,
@@ -32,65 +31,67 @@ let iconListBrand = Object.keys(IconBrand)
 
 library.add(...iconListBrand, ...iconListSolid);
 
-const LoginScreenProps = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const NewPassword = () => {
+  const [code, setCode] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const navigation = useNavigation();
   const onSignInPressed = () => {
-    console.warn('onSignInPressed');
-
-    navigation.navigate('Register');
+    console.warn('Pesan dan tombol ini dapat di edit');
+    navigation.navigate('Login');
   };
-  const onForgotPressed = () => {
-    console.warn('onForgotPressed');
 
-    navigation.navigate('ConfirmEmail');
+  const onForgotPasswordPressed = () => {
+    console.warn('Ke layar home');
+    navigation.navigate('Login');
   };
+  useEffect(() => {
+    console.log(CustomButton);
+  }, []);
 
   return (
     <View style={styles.root}>
       <StatusBar backgroundColor={'#F1592A'} barstyle="dark-content" />
       <View style={styles.root2}>
-        <Image
-          source={require('./../../images/kurirlokal.png')}
-          style={styles.logo}
-        />
-        <Text style={{marginTop: 10, fontWeight: 'bold'}}>Login</Text>
-      </View>
+        <Text style={styles.text}>Kulo Merchant</Text>
+        <Text style={{marginTop: 10, fontWeight: 'bold'}}>Password Baru</Text>
 
-      <View style={styles.itemCol}>
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'envelope']} />
-          <CustomInput placeholder="Email" value={email} setValue={setEmail} />
+        <View style={styles.itemCol}>
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'envelope']} />
+            <CustomInput
+              placeholder="Masukkan Kode"
+              value={code}
+              setValue={setCode}
+            />
+          </View>
+
+          <View style={styles.itemRow}>
+            <FontAwesomeIcon icon={['fas', 'lock']} />
+            <CustomInput
+              placeholder="Masukkan Password Baru"
+              value={newPassword}
+              setValue={setNewPassword}
+              secureTextEntry={true}
+            />
+          </View>
         </View>
 
-        <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'lock']} />
-          <CustomInput
-            placeholder="Kata Sandi"
-            value={password}
-            setValue={setPassword}
-            secureTextEntry={true}
+        <TouchableOpacity>
+          <CustomButton text="MASUK" onPress={onForgotPasswordPressed} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <CustomButton
+            text="Kembali ke laman login"
+            onPress={onSignInPressed}
+            type="TERTIARY"
           />
-        </View>
+        </TouchableOpacity>
       </View>
-
-      <TouchableOpacity>
-        <CustomButton text="MASUK" onPress={onSignInPressed} />
-      </TouchableOpacity>
-
-      <TouchableOpacity>
-        <CustomButton
-          text="Lupa Kata Sandi"
-          onPress={onForgotPressed}
-          type="TERTIARY"
-        />
-      </TouchableOpacity>
     </View>
   );
 };
 
-export default LoginScreenProps;
+export default NewPassword;
 
 const styles = StyleSheet.create({
   root: {
@@ -98,7 +99,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     backgroundColor: '#ffffff',
-    marginVertical: verticalScale(25),
   },
   root2: {
     alignItems: 'center',
@@ -125,12 +125,18 @@ const styles = StyleSheet.create({
   },
   kotak: {
     height: verticalScale(50),
-    width: horizontalScale(280),
+    width: horizontalScale(330),
     borderColor: '#DEDEDE',
     borderWidth: horizontalScale(0.5),
     borderRadius: moderateScale(3),
     marginVertical: verticalScale(10),
     justifyContent: 'center', //Centered vertically
     alignItems: 'center', // Centered horizontally
+  },
+  container: {
+    width: horizontalScale(330),
+    height: verticalScale(50),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
