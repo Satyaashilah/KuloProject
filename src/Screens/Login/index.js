@@ -6,6 +6,7 @@ import * as IconBrand from '@fortawesome/free-brands-svg-icons';
 import {CustomButton} from '../../components';
 import {CustomInput} from '../../components';
 import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
 import {
   View,
@@ -32,19 +33,23 @@ let iconListBrand = Object.keys(IconBrand)
 
 library.add(...iconListBrand, ...iconListSolid);
 
-const LoginScreenProps = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigation = useNavigation();
-  const onSignInPressed = () => {
-    console.warn('onSignInPressed');
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+const LoginScreenProps = () => {
+  const navigation = useNavigation();
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm();
+  const onSignInPressed = () => {
     navigation.navigate('Register');
   };
   const onForgotPressed = () => {
-    console.warn('onForgotPressed');
+    console.warn('ConfirmEmail');
 
-    navigation.navigate('ConfirmEmail');
+    navigation.navigate('Register');
   };
 
   return (
@@ -61,22 +66,37 @@ const LoginScreenProps = () => {
       <View style={styles.itemCol}>
         <View style={styles.itemRow}>
           <FontAwesomeIcon icon={['fas', 'envelope']} />
-          <CustomInput placeholder="Email" value={email} setValue={setEmail} />
+          <CustomInput
+            name="email"
+            placeholder="Email"
+            control={control}
+            rules={{
+              required: 'Email is required',
+              pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
+            }}
+          />
         </View>
 
         <View style={styles.itemRow}>
           <FontAwesomeIcon icon={['fas', 'lock']} />
           <CustomInput
-            placeholder="Kata Sandi"
-            value={password}
-            setValue={setPassword}
-            secureTextEntry={true}
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+            control={control}
+            rules={{
+              required: 'Password is required',
+              minLength: {
+                value: 3,
+                message: 'Password should be minimum 3 characters long',
+              },
+            }}
           />
         </View>
       </View>
 
       <TouchableOpacity>
-        <CustomButton text="MASUK" onPress={onSignInPressed} />
+        <CustomButton text="MASUK" onPress={handleSubmit(onSignInPressed)} />
       </TouchableOpacity>
 
       <TouchableOpacity>
