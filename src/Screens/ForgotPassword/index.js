@@ -6,7 +6,7 @@ import * as IconBrand from '@fortawesome/free-brands-svg-icons';
 import {CustomButton} from '../../components';
 import {CustomInput} from '../../components';
 import {useNavigation} from '@react-navigation/native';
-
+import {useForm} from 'react-hook-form';
 import {
   View,
   Text,
@@ -29,9 +29,11 @@ let iconListBrand = Object.keys(IconBrand)
   .map(icon => IconBrand[icon]);
 
 library.add(...iconListBrand, ...iconListSolid);
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+  const {control, handleSubmit} = useForm();
   const navigation = useNavigation();
   const onSignInPressed = () => {
     console.warn('onSignInPressed');
@@ -43,7 +45,9 @@ const ForgotPassword = () => {
 
     navigation.navigate('NewPassword');
   };
-
+  const onForgotPasswordPressed = () => {
+    navigation.navigate('ConfirmEmail');
+  };
   useEffect(() => {
     console.log(CustomButton);
   }, []);
@@ -58,21 +62,33 @@ const ForgotPassword = () => {
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'envelope']} />
             <CustomInput
+              name="email"
               placeholder="Email"
-              value={email}
-              setValue={setEmail}
+              control={control}
+              rules={{
+                required: 'Email is required',
+                pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
+              }}
             />
           </View>
         </View>
 
         <TouchableOpacity>
-          <CustomButton text="Submit" onPress={onSubmitPressed} />
+          <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)} />
         </TouchableOpacity>
 
         <TouchableOpacity>
           <CustomButton
             text="Kembali Ke Halaman Login"
             onPress={onSignInPressed}
+            type="TERTIARY"
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <CustomButton
+            text="Tombol Sementara"
+            onPress={onForgotPasswordPressed}
             type="TERTIARY"
           />
         </TouchableOpacity>

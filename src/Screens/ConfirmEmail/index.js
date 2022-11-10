@@ -6,6 +6,7 @@ import * as IconBrand from '@fortawesome/free-brands-svg-icons';
 import {CustomButton} from '../../components';
 import {CustomInput} from '../../components';
 import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
 import {
   View,
@@ -32,12 +33,13 @@ let iconListBrand = Object.keys(IconBrand)
 library.add(...iconListBrand, ...iconListSolid);
 
 const ConfirmEmail = () => {
-  const [code, setCode] = useState('');
   const navigation = useNavigation();
-  const register = () => navigation.navigate('ForgotPassword');
 
-  const onConfirmPressed = () => {
+  const {control, handleSubmit} = useForm();
+
+  const onConfirmPressed = data => {
     console.warn('Pesan dan tombol ini dapat di edit');
+    console.log(data);
     navigation.navigate('NewPassword');
   };
 
@@ -53,6 +55,7 @@ const ConfirmEmail = () => {
   const onResendPressed = () => {
     console.warn('Pesan dan tombol ini dapat di edit');
   };
+
   useEffect(() => {
     console.log(CustomButton);
   }, []);
@@ -68,15 +71,21 @@ const ConfirmEmail = () => {
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'envelope']} />
             <CustomInput
-              placeholder="Masukkan Kode Konfirmasi"
-              value={code}
-              setValue={setCode}
+              name="code"
+              placeholder="Enter your confirmation code"
+              control={control}
+              rules={{
+                required: 'Confirmation code is required',
+              }}
             />
           </View>
         </View>
 
         <TouchableOpacity>
-          <CustomButton text="KONFIRMASI" onPress={onConfirmPressed} />
+          <CustomButton
+            text="KONFIRMASI"
+            onPress={handleSubmit(onConfirmPressed)}
+          />
         </TouchableOpacity>
 
         <TouchableOpacity>

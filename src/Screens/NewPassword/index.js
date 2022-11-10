@@ -32,9 +32,10 @@ let iconListBrand = Object.keys(IconBrand)
 library.add(...iconListBrand, ...iconListSolid);
 
 const NewPassword = () => {
-  const [code, setCode] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const {control, handleSubmit} = useForm();
+
   const navigation = useNavigation();
+
   const onSignInPressed = () => {
     console.warn('Pesan dan tombol ini dapat di edit');
     navigation.navigate('Login');
@@ -59,30 +60,38 @@ const NewPassword = () => {
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'envelope']} />
             <CustomInput
+              name="code"
               placeholder="Masukkan Kode"
-              value={code}
-              setValue={setCode}
+              control={control}
+              rules={{
+                required: 'Code is required',
+              }}
             />
           </View>
 
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'lock']} />
             <CustomInput
-              placeholder="Masukkan Password Baru"
-              value={newPassword}
-              setValue={setNewPassword}
+              name="newPassword"
+              placeholder="Enter New Password"
               secureTextEntry={true}
+              rules={{
+                required: 'Code is required',
+              }}
             />
           </View>
         </View>
 
         <TouchableOpacity>
-          <CustomButton text="MASUK" onPress={onForgotPasswordPressed} />
+          <CustomButton
+            text="MASUK"
+            onPress={handleSubmit(onForgotPasswordPressed)}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <CustomButton
             text="Kembali ke laman login"
-            onPress={onSignInPressed}
+            onPress={handleSubmit(onSignInPressed)}
             type="TERTIARY"
           />
         </TouchableOpacity>

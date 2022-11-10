@@ -13,7 +13,7 @@ const index = () => {
       resizeMode="cover">
       <View style={{flexDirection: 'row'}}>
         <Image
-          source={require('./../../images/kurirlokal.png')}
+          source={require('./../../../images/kurirlokal.png')}
           style={styles.logo}
         />
         <Text style={styles.merchant}>Merchant</Text>

@@ -7,7 +7,7 @@ const index = () => {
       <View style={styles.kotak1}>
         <View style={{flexDirection: 'row'}}>
           <Image
-            source={require('./../../images/wallet.png')}
+            source={require('./../../../images/wallet.png')}
             style={styles.walletkcl}
           />
           <Text
@@ -31,7 +31,7 @@ const index = () => {
             10,000.00
           </Text>
           <Image
-            source={require('./../../images/RightCevron.png')}
+            source={require('./../../../images/RightCevron.png')}
             style={{width: 8, height: 8, marginTop: '7%', marginLeft: '3%'}}
           />
         </View>

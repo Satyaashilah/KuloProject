@@ -38,18 +38,25 @@ const EMAIL_REGEX =
 
 const LoginScreenProps = () => {
   const navigation = useNavigation();
+
   const {
     control,
     handleSubmit,
     formState: {errors},
   } = useForm();
+
   const onSignInPressed = () => {
     navigation.navigate('Register');
   };
+
   const onForgotPressed = () => {
     console.warn('ConfirmEmail');
 
     navigation.navigate('Register');
+  };
+
+  const onForgotPasswordPressed = () => {
+    navigation.navigate('Home');
   };
 
   return (
@@ -103,6 +110,13 @@ const LoginScreenProps = () => {
         <CustomButton
           text="Lupa Kata Sandi"
           onPress={onForgotPressed}
+          type="TERTIARY"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <CustomButton
+          text="Tombol Sementara"
+          onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
       </TouchableOpacity>

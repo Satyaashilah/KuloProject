@@ -37,24 +37,25 @@ const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordRepeat, setPasswordRepeat] = useState('');
-  const [user, setUser] = useState('');
-  const [phone, setPhone] = useState('');
   const {control, handleSubmit, watch} = useForm();
+
   const pwd = watch('');
+
   const navigation = useNavigation();
 
   const onSignUpPressed = () => {
     console.warn('onSignUpPressed');
 
-    navigation.navigate('Login');
+    navigation.navigate('ForgotPassword');
   };
   const onSignInPressed = () => {
     console.warn('onSignInPressed');
 
-    navigation.navigate('Login');
+    navigation.navigate('ForgotPassword');
+  };
+
+  const onForgotPasswordPressed = () => {
+    navigation.navigate('ForgotPassword');
   };
 
   return (
@@ -77,7 +78,6 @@ const Register = () => {
             <CustomInput
               name="user"
               placeholder="Username"
-              secureTextEntry
               control={control}
               rules={{
                 required: 'Username is required',
@@ -140,12 +140,6 @@ const Register = () => {
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'lock']} />
             <CustomInput
-              placeholder="Ulangi Kata Sandi"
-              value={passwordRepeat}
-              setValue={setPasswordRepeat}
-              secureTextEntry={true}
-            />
-            <CustomInput
               name="passwordRepeat"
               placeholder="Repeat Password"
               secureTextEntry
@@ -158,13 +152,20 @@ const Register = () => {
         </View>
 
         <TouchableOpacity>
-          <CustomButton text="DAFTAR" onPress={onSignUpPressed} />
+          <CustomButton text="DAFTAR" onPress={handleSubmit(onSignUpPressed)} />
         </TouchableOpacity>
 
         <TouchableOpacity>
           <CustomButton
             text="Login"
-            onPress={onSignInPressed}
+            onPress={handleSubmit(onSignInPressed)}
+            type="TERTIARY"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <CustomButton
+            text="Tombol Sementara"
+            onPress={onForgotPasswordPressed}
             type="TERTIARY"
           />
         </TouchableOpacity>
