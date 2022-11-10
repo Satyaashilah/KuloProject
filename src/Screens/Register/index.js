@@ -6,6 +6,7 @@ import * as IconBrand from '@fortawesome/free-brands-svg-icons';
 import {CustomButton} from '../../components';
 import {CustomInput} from '../../components';
 import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
 import {
   View,
@@ -32,13 +33,17 @@ let iconListBrand = Object.keys(IconBrand)
 
 library.add(...iconListBrand, ...iconListSolid);
 
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
   const [user, setUser] = useState('');
   const [phone, setPhone] = useState('');
-
+  const {control, handleSubmit, watch} = useForm();
+  const pwd = watch('');
   const navigation = useNavigation();
 
   const onSignUpPressed = () => {
@@ -70,37 +75,65 @@ const Register = () => {
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'user']} />
             <CustomInput
-              placeholder="Nama Pengguna"
-              value={user}
-              setValue={setUser}
+              name="user"
+              placeholder="Username"
+              secureTextEntry
+              control={control}
+              rules={{
+                required: 'Username is required',
+                minLength: {
+                  value: 3,
+                  message: 'Username should be at least 3 characters long',
+                },
+                maxLength: {
+                  value: 24,
+                  message: 'Username should be max 24 characters long',
+                },
+              }}
             />
           </View>
 
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'envelope']} />
             <CustomInput
+              name="email"
               placeholder="Email"
-              value={email}
-              setValue={setEmail}
+              secureTextEntry
+              control={control}
+              rules={{
+                required: 'Email is required',
+                pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
+              }}
             />
           </View>
 
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'phone']} />
             <CustomInput
-              placeholder="Nomor Telepon"
-              value={phone}
-              setValue={setPhone}
+              name="phone"
+              placeholder="Phone Number"
+              secureTextEntry
+              control={control}
+              rules={{
+                required: 'Phone Number is required',
+              }}
             />
           </View>
 
           <View style={styles.itemRow}>
             <FontAwesomeIcon icon={['fas', 'lock']} />
             <CustomInput
-              placeholder="Kata Sandi"
-              value={password}
-              setValue={setPassword}
-              secureTextEntry={true}
+              name="password"
+              placeholder="Password"
+              secureTextEntry
+              control={control}
+              rules={{
+                required: 'Password is required',
+                minLength: {
+                  value: 3,
+                  message: 'Password should be minimum 3 characters long',
+                },
+              }}
             />
           </View>
 
@@ -111,6 +144,15 @@ const Register = () => {
               value={passwordRepeat}
               setValue={setPasswordRepeat}
               secureTextEntry={true}
+            />
+            <CustomInput
+              name="passwordRepeat"
+              placeholder="Repeat Password"
+              secureTextEntry
+              control={control}
+              rules={{
+                validate: value => value == pwd || 'Password do not match',
+              }}
             />
           </View>
         </View>
