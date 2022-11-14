@@ -1,30 +1,14 @@
 import React from 'react';
 import Component from './../../components';
-import {
-  View,
-  Text,
-  Image,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import {
-  horizontalScale,
-  moderateScale,
-  verticalScale,
-} from './../../Theme/Metric';
-import {ScrollView} from 'react-native-gesture-handler';
+
 const index = () => {
   return (
-    <ScrollView>
-      <View style={styles.root}>
-        <View>
-          <Component.HomeComp.Banner />
-          <Component.HomeComp.SaldoKecil />
-          <Component.HomeComp.Fitur />
-        </View>
-      </View>
-    </ScrollView>
+    <View style={{flexDirection: 'column'}}>
+      <Component.HomeComp.Banner />
+      <Component.HomeComp.SaldoKecil />
+      <Component.HomeComp.Fitur />
+      <Component.HomeComp.CardCarousel />
+    </View>
   );
 };
 

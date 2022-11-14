@@ -1,115 +1,122 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
+import * as React from 'react';
+
 import {
   View,
   Text,
   TouchableOpacity,
   ImageBackground,
   StyleSheet,
+  SafeAreaView,
+
 } from 'react-native';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from './../../../Theme/Metric';
 import Carousel from 'react-native-snap-carousel';
 
 class CardCarousel extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 0,
-      carouselItems: [
+      activeIndex:0,
+      carouselItems:[
         {
-          title: 'Item 1',
-          text: 'Text 1',
+          title: "Item 1",
+          text: "Text",
           Image: require('./../../../images/unsplash1.jpg'),
           navigate: () => {
             props.navigation.push('Login');
           },
         },
         {
-          title: 'Item 2',
-          text: 'Text 2',
+          title: "Item 2",
+          text: "Text",
           Image: require('./../../../images/unsplash2.jpg'),
           navigate: () => {
             props.navigation.push('Login');
           },
         },
         {
-          title: 'Item 3',
-          text: 'Text 3',
+          title: "Item 3",
+          text: "Text",
           Image: require('./../../../images/unsplash3.jpg'),
           navigate: () => {
             props.navigation.push('Login');
           },
         },
         {
-          title: 'Item 4',
-          text: 'Text 4',
+          title: "Item 4",
+          text: "Text",
           Image: require('./../../../images/unsplash4.jpg'),
           navigate: () => {
             props.navigation.push('Login');
           },
         },
         {
-          title: 'Item 5',
-          text: 'Text 5',
-          Image: require('./../../../images/unsplash5.jpg'),
-          navigate: () => {
-            props.navigation.push('Login');
-          },
-        },
-      ],
+              title: 'Item 5',
+              text: 'Text 5',
+              Image: require('./../../../images/unsplash5.jpg'),
+              navigate: () => {
+                props.navigation.push('Login');
+              },
+            },
+      ]
     };
   }
 
-  _renderItem({item}) {
-    return (
+  _renderItem({item}){
+    return(
       <TouchableOpacity
-        style={{
-          backgroundColor: 'floralwhite',
-          borderRadius: 10,
-          height: 250,
-          marginRight: 25,
-          marginTop: 25,
-          marginBottom: 100,
-        }}
-        onPress={item.navigate}>
+      style={{
+        backgroundColor: "white",
+        borderRadius: moderateScale(10),
+        height: verticalScale(250),
+        width: horizontalScale (250),
+        marginLeft: horizontalScale(25),
+        marginRight: horizontalScale(5),
+        marginBottom: verticalScale(100),
+      }} 
+      onPress={item.navigate}>
         <ImageBackground
           source={item.Image}
           resizeMode="cover"
           style={{
             flex: 1,
             justifyContent: 'center',
-          }}></ImageBackground>
-        <Text style={{fontSize: 20, fontWeight: 'bold', paddingLeft: 10}}>
-          {item.title}
-        </Text>
-        <Text style={{fontSize: 10, marginTop: 5, paddingLeft: 10}}>
-          {' '}
-          {item.text}
-        </Text>
+          }}>
+          </ImageBackground>
+          <Text style={style.title}>
+            {item.title}
+              </Text>
+              <Text style={style.text}>
+              {/* {' '} */}
+            {item.text}
+         </Text>
       </TouchableOpacity>
-    );
+      
+    )
   }
+ 
   render() {
     return (
-      <View>
-        <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>What's New</Text>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
-            <Carousel
-              layout={'default'}
-              ref={ref => (this.carousel = ref)}
-              data={this.state.carouselItems}
-              sliderWidth={300}
-              itemWidth={300}
-              renderItem={this._renderItem}
-              onSnapToItem={index => this.setState({activeIndex: index})}
-            />
-          </View>
+      <SafeAreaView>
+        <View style={{flex:1, flexDirection: 'row', justifyContent: 'center'}}>
+        <Carousel
+          layout={'default'}
+          ref={ref => (this.carousel = ref)}
+          data={this.state.carouselItems}
+          sliderWidth={300}
+          itemWidth={300}
+          renderItem={this._renderItem}
+          onSnapToItem={index => this.setState({activeIndex: index})}
+          />
         </View>
-      </View>
+      </SafeAreaView>
+   
     );
   }
 }
@@ -117,44 +124,22 @@ class CardCarousel extends Component {
 //
 
 const style = StyleSheet.create({
-  wallet: {
-    marginLeft: 20,
-    width: 30,
-    height: 30,
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-
-  kotak2: {
-    height: 'auto',
-    width: 'auto',
-    borderRadius: 7,
-    backgroundColor: '#5C93FF',
-    marginTop: '5%',
+  title:{
+    fontSize: moderateScale(20), 
+    fontWeight: 'bold', 
+    paddingLeft: horizontalScale(5),
   },
-
-  kotak3: {
-    marginHorizontal: '5.5%',
-    height: 60,
-    width: 60,
-    backgroundColor: '#ffffff',
-    borderColor: '#DEDEDE',
-    borderRadius: 8,
-  },
-
-  fiturHome: {
-    width: 30,
-    height: 30,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: '25%',
-  },
-  fiturHomeTxt: {
-    marginHorizontal: '5.5%',
-    height: 60,
-    width: 60,
-    fontWeight: 'bold',
-    fontSize: 12,
-    textAlign: 'center',
-    color: '#4C4C4C',
+  text: {
+    fontSize: moderateScale(10), 
+    marginTop: verticalScale(5), 
+    paddingLeft: horizontalScale(10),
+    paddingBottom: verticalScale(10),
   },
 });
 
