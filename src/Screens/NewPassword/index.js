@@ -58,7 +58,9 @@ const NewPassword = () => {
 
         <View style={styles.itemCol}>
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'envelope']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'envelope']} style={styles.icon} />
+            </View>
             <CustomInput
               name="code"
               placeholder="Masukkan Kode"
@@ -70,7 +72,9 @@ const NewPassword = () => {
           </View>
 
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'lock']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'lock']} style={styles.icon} />
+            </View>
             <CustomInput
               name="newPassword"
               placeholder="Enter New Password"
@@ -132,15 +136,19 @@ const styles = StyleSheet.create({
     maxHeight: verticalScale(70),
     maxWidth: horizontalScale(150),
   },
-  kotak: {
+  icon: {
+    color: '#B4B4B4',
+  },
+  iconBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+    width: horizontalScale(50),
     height: verticalScale(50),
-    width: horizontalScale(330),
-    borderColor: '#DEDEDE',
-    borderWidth: horizontalScale(0.5),
-    borderRadius: moderateScale(3),
-    marginVertical: verticalScale(10),
-    justifyContent: 'center', //Centered vertically
-    alignItems: 'center', // Centered horizontally
+    borderColor: '#e8e8e8e8',
+    borderWidth: horizontalScale(1),
+    borderRadius: moderateScale(1),
+    marginVertical: 5,
   },
   container: {
     width: horizontalScale(330),

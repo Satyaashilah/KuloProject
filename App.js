@@ -1,13 +1,13 @@
 import {
+  SplashScreen,
+  Login,
+  Register,
   ConfirmEmail,
   ForgotPassword,
   NewPassword,
-  SplashScreen,
+  Home,
 } from './src/Screens';
-import {Login} from './src/Screens';
-import {Register} from './src/Screens';
-import {Home} from './src/Screens';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -17,9 +17,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SplashScreen"
+        initialRouteName="Login"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={Home} />
         {/* <Stack.Screen name="Detail" component={Detail} /> */}
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="Login" component={Login} />
@@ -27,6 +26,7 @@ function App() {
         <Stack.Screen name="ConfirmEmail" component={ConfirmEmail} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );

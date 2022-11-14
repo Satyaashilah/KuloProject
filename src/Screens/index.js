@@ -1,5 +1,5 @@
 import SplashScreen from './SplashScreen/index';
-import Login from './Login/index';
+import Login from './Login';
 import Register from './Register/index';
 import ConfirmEmail from './ConfirmEmail';
 import ForgotPassword from './ForgotPassword';

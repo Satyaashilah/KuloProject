@@ -69,7 +69,9 @@ const ConfirmEmail = () => {
 
         <View style={styles.itemCol}>
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'envelope']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'envelope']} style={styles.icon} />
+            </View>
             <CustomInput
               name="code"
               placeholder="Enter your confirmation code"
@@ -135,5 +137,19 @@ const styles = StyleSheet.create({
     height: verticalScale(50),
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  icon: {
+    color: '#B4B4B4',
+  },
+  iconBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+    width: horizontalScale(50),
+    height: verticalScale(50),
+    borderColor: '#e8e8e8e8',
+    borderWidth: horizontalScale(1),
+    borderRadius: moderateScale(1),
+    marginVertical: 5,
   },
 });

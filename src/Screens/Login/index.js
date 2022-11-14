@@ -13,7 +13,6 @@ import {
   Text,
   Image,
   StatusBar,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -72,20 +71,27 @@ const LoginScreenProps = () => {
 
       <View style={styles.itemCol}>
         <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'envelope']} />
+          <View style={styles.iconBox}>
+            <FontAwesomeIcon icon={['fas', 'envelope']} style={styles.icon} />
+          </View>
           <CustomInput
             name="email"
             placeholder="Email"
             control={control}
             rules={{
               required: 'Email is required',
-              pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
+              pattern: {
+                value: EMAIL_REGEX,
+                message: 'Email is invalid',
+              },
             }}
           />
         </View>
 
         <View style={styles.itemRow}>
-          <FontAwesomeIcon icon={['fas', 'lock']} />
+          <View style={styles.iconBox}>
+            <FontAwesomeIcon icon={['fas', 'lock']} style={styles.icon} />
+          </View>
           <CustomInput
             name="password"
             placeholder="Password"
@@ -145,8 +151,8 @@ const styles = StyleSheet.create({
   },
   itemCol: {
     flexDirection: 'column',
-    marginVertical: verticalScale(10),
-    marginHorizontal: horizontalScale(10),
+    marginVertical: verticalScale(20),
+    marginHorizontal: horizontalScale(20),
   },
   itemRow: {
     flexDirection: 'row',
@@ -157,14 +163,18 @@ const styles = StyleSheet.create({
     maxHeight: verticalScale(70),
     maxWidth: horizontalScale(150),
   },
-  kotak: {
+  icon: {
+    color: '#B4B4B4',
+  },
+  iconBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+    width: horizontalScale(50),
     height: verticalScale(50),
-    width: horizontalScale(280),
-    borderColor: '#DEDEDE',
-    borderWidth: horizontalScale(0.5),
-    borderRadius: moderateScale(3),
-    marginVertical: verticalScale(10),
-    justifyContent: 'center', //Centered vertically
-    alignItems: 'center', // Centered horizontally
+    borderColor: '#e8e8e8e8',
+    borderWidth: horizontalScale(1),
+    borderRadius: moderateScale(1),
+    marginVertical: 5,
   },
 });

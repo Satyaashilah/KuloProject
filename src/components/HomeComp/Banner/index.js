@@ -1,16 +1,14 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from './../../../Theme/Metric';
 
 const index = () => {
   return (
-    <View
-      style={{
-        flexDirection: 'column',
-        marginLeft: 15,
-        marginTop: 15,
-        marginRight: 15,
-      }}
-      resizeMode="cover">
+    <View>
       <View style={{flexDirection: 'row'}}>
         <Image
           source={require('./../../../images/kurirlokal.png')}
@@ -26,16 +24,14 @@ export default index;
 
 const styles = StyleSheet.create({
   logo: {
-    width: 35,
-    height: 25,
+    width: horizontalScale(100),
+    height: verticalScale(50),
   },
   merchant: {
     textAlign: 'right',
     flex: 1,
-    fontSize: 30,
+    fontSize: moderateScale(30),
     color: '#598FF9',
     fontWeight: 'bold',
-    marginRight: 'auto',
-    marginLeft: 'auto',
   },
 });

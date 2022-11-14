@@ -67,14 +67,14 @@ const Register = () => {
             source={require('./../../images/kurirlokal.png')}
             style={styles.logo}
           />
-
-          <Text style={styles.text}>Kulo Merchant</Text>
           <Text style={{marginTop: 10, fontWeight: 'bold'}}>Register</Text>
         </View>
 
         <View style={styles.itemCol}>
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'user']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'user']} style={styles.icon} />
+            </View>
             <CustomInput
               name="user"
               placeholder="Username"
@@ -94,7 +94,9 @@ const Register = () => {
           </View>
 
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'envelope']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'envelope']} style={styles.icon} />
+            </View>
             <CustomInput
               name="email"
               placeholder="Email"
@@ -108,7 +110,9 @@ const Register = () => {
           </View>
 
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'phone']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'phone']} style={styles.icon} />
+            </View>
             <CustomInput
               name="phone"
               placeholder="Phone Number"
@@ -121,7 +125,9 @@ const Register = () => {
           </View>
 
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'lock']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'lock']} style={styles.icon} />
+            </View>
             <CustomInput
               name="password"
               placeholder="Password"
@@ -138,7 +144,9 @@ const Register = () => {
           </View>
 
           <View style={styles.itemRow}>
-            <FontAwesomeIcon icon={['fas', 'lock']} />
+            <View style={styles.iconBox}>
+              <FontAwesomeIcon icon={['fas', 'lock']} style={styles.icon} />
+            </View>
             <CustomInput
               name="passwordRepeat"
               placeholder="Repeat Password"
@@ -206,5 +214,19 @@ const styles = StyleSheet.create({
     width: horizontalScale(150),
     maxHeight: verticalScale(70),
     maxWidth: horizontalScale(150),
+  },
+  icon: {
+    color: '#B4B4B4',
+  },
+  iconBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+    width: horizontalScale(50),
+    height: verticalScale(50),
+    borderColor: '#e8e8e8e8',
+    borderWidth: horizontalScale(1),
+    borderRadius: moderateScale(1),
+    marginVertical: 5,
   },
 });

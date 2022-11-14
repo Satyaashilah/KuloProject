@@ -1,5 +1,10 @@
 import {StyleSheet, Text, TouchableOpacity, Image, View} from 'react-native';
 import React from 'react';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from './../../../Theme/Metric';
 
 const index = () => {
   return (
@@ -11,7 +16,6 @@ const index = () => {
               <Image
                 source={require('./../../../images/order.png')}
                 style={styles.fiturHome}
-                resizeMode="cover"
               />
             </View>
           </View>
@@ -24,7 +28,6 @@ const index = () => {
               <Image
                 source={require('./../../../images/menu.png')}
                 style={styles.fiturHome}
-                resizeMode="cover"
               />
             </View>
           </View>
@@ -37,7 +40,6 @@ const index = () => {
               <Image
                 source={require('./../../../images/groceries.png')}
                 style={styles.fiturHome}
-                resizeMode="cover"
               />
             </View>
           </View>
@@ -50,7 +52,6 @@ const index = () => {
               <Image
                 source={require('./../../../images/coupon.png')}
                 style={styles.fiturHome}
-                resizeMode="cover"
               />
             </View>
           </View>
@@ -65,7 +66,6 @@ const index = () => {
               <Image
                 source={require('./../../../images/finance.png')}
                 style={styles.fiturHome}
-                resizeMode="cover"
               />
             </View>
           </View>
@@ -78,7 +78,6 @@ const index = () => {
               <Image
                 source={require('./../../../images/group.png')}
                 style={styles.fiturHome}
-                resizeMode="cover"
               />
             </View>
           </View>
@@ -93,27 +92,27 @@ export default index;
 
 const styles = StyleSheet.create({
   kotak3: {
-    marginHorizontal: '5.5%',
-    height: 60,
-    width: 60,
-    backgroundColor: '#ffffff',
+    height: verticalScale(60),
+    width: horizontalScale(60),
+    backgroundColor: '#FFFFFF',
     borderColor: '#DEDEDE',
-    borderRadius: 8,
+    borderWidth: moderateScale(1.5),
+    borderRadius: moderateScale(8),
   },
 
   fiturHome: {
-    width: 30,
-    height: 30,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: '25%',
+    width: horizontalScale(27),
+    height: verticalScale(27),
+    marginHorizontal: horizontalScale(15),
+    marginVertical: verticalScale(15),
   },
   fiturHomeTxt: {
-    marginHorizontal: '5.5%',
-    height: 60,
-    width: 60,
+    // marginHorizontal: horizontalScale(15),
+    // height: 60,
+    // width: 60,
+
     fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: moderateScale(12),
     textAlign: 'center',
     color: '#4C4C4C',
   },
