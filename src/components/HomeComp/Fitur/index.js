@@ -1,18 +1,43 @@
 import {StyleSheet, Text, TouchableOpacity, Image, View} from 'react-native';
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
+import * as IconBrand from '@fortawesome/free-brands-svg-icons';
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from './../../../Theme/Metric';
+import {library} from '@fortawesome/fontawesome-svg-core';
+const iconListSolid = Object.keys(IconsSolid)
+  .filter(key => key !== 'fas' && key !== 'prefix')
+  .map(icon => IconsSolid[icon]);
 
+let iconListBrand = Object.keys(IconBrand)
+  .filter(key => key !== 'fab' && key !== 'prefix')
+  .map(icon => IconBrand[icon]);
+
+library.add(...iconListBrand, ...iconListSolid);
 const index = () => {
   return (
-    <View style={{flexDirection: 'column'}}>
-      <View style={{flexDirection: 'row'}}>
+    <View
+      style={{
+        padding: verticalScale(5),
+      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignSelf: 'flex-start',
+          flexWrap: 'wrap',
+        }}>
         <TouchableOpacity>
           <View style={styles.kotak3}>
             <View>
+              {/* <FontAwesomeIcon
+                icon={['fas', 'cart-shopping']}
+                style={styles.fiturHome}
+              /> */}
               <Image
                 source={require('./../../../images/order.png')}
                 style={styles.fiturHome}
@@ -57,9 +82,7 @@ const index = () => {
           </View>
           <Text style={styles.fiturHomeTxt}>Diskon</Text>
         </TouchableOpacity>
-      </View>
 
-      <View style={{flexDirection: 'row'}}>
         <TouchableOpacity>
           <View style={styles.kotak3}>
             <View>
@@ -98,6 +121,7 @@ const styles = StyleSheet.create({
     borderColor: '#DEDEDE',
     borderWidth: moderateScale(1.5),
     borderRadius: moderateScale(8),
+    marginHorizontal: horizontalScale(20),
   },
 
   fiturHome: {
@@ -105,11 +129,14 @@ const styles = StyleSheet.create({
     height: verticalScale(27),
     marginHorizontal: horizontalScale(15),
     marginVertical: verticalScale(15),
+    justifyContent: 'center',
+    alignSelf: 'center',
+    color: '#F1592A',
   },
   fiturHomeTxt: {
-    // marginHorizontal: horizontalScale(15),
-    // height: 60,
-    // width: 60,
+    marginHorizontal: horizontalScale(15),
+    height: verticalScale(40),
+    width: horizontalScale(60),
 
     fontWeight: 'bold',
     fontSize: moderateScale(12),

@@ -8,7 +8,7 @@ import {
 
 const index = () => {
   return (
-    <View>
+    <View style={styles.root}>
       <View style={{flexDirection: 'row'}}>
         <Image
           source={require('./../../../images/kurirlokal.png')}
@@ -23,15 +23,20 @@ const index = () => {
 export default index;
 
 const styles = StyleSheet.create({
+  root: {
+    paddingHorizontal: horizontalScale(25),
+  },
   logo: {
-    width: horizontalScale(100),
+    width: horizontalScale(70),
     height: verticalScale(50),
+    resizeMode: 'contain',
   },
   merchant: {
     textAlign: 'right',
     flex: 1,
-    fontSize: moderateScale(30),
-    color: '#598FF9',
+    fontSize: moderateScale(20),
+    color: '#F1592A',
     fontWeight: 'bold',
+    paddingVertical: verticalScale(5),
   },
 });

@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconBrand from '@fortawesome/free-brands-svg-icons';
@@ -21,17 +21,20 @@ library.add(...iconListBrand, ...iconListSolid);
 const index = () => {
   return (
     <View style={styles.root}>
-      <View style={styles.kotak1}>
+      <TouchableOpacity
+        style={styles.kotak1}
+        onPress={() => this.props.navigation.navigate('Payment')}>
+        <Text style={styles.sales}>Total Sales Today</Text>
         <View style={{flexDirection: 'row'}}>
           <FontAwesomeIcon icon={['fas', 'wallet']} style={styles.walletkcl} />
           <Text style={styles.rp}>Rp</Text>
-          <Text style={styles.money}>10,000.00</Text>
-          <FontAwesomeIcon
-            icon={['fas', 'chevron-right']}
-            style={styles.icon}
-          />
+          <Text style={styles.money}>2,500.00</Text>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={styles.day}>Yesterday</Text>
+            <Text style={styles.money2}>Rp 3,000.00</Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -43,41 +46,61 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(25),
   },
   kotak1: {
-    height: verticalScale(25),
-    width: horizontalScale(120),
-    borderRadius: moderateScale(25),
+    height: 'auto',
+    width: 'auto',
+    borderRadius: 7,
     backgroundColor: '#F1592A',
-    marginTop: verticalScale(20),
+    marginTop: '5%',
   },
 
   walletkcl: {
-    marginLeft: horizontalScale(8),
-    marginTop: verticalScale(5),
-    width: horizontalScale(15),
-    height: verticalScale(15),
+    marginLeft: horizontalScale(20),
+    width: horizontalScale(20),
+    height: verticalScale(30),
     color: '#ffffff',
   },
 
   rp: {
     fontWeight: 'normal',
-    fontSize: moderateScale(8),
-    marginLeft: '1%',
-    marginTop: '4%',
+    marginLeft: 20,
+    marginTop: 15,
+    fontSize: 12,
     color: '#ffffff',
   },
   money: {
-    fontWeight: '900',
-    fontSize: moderateScale(14),
-    marginLeft: '1%',
-    marginTop: '2%',
+    fontWeight: 'bold',
+    marginLeft: 5,
+    marginBottom: 25,
+    fontSize: 35,
+    color: '#ffffff',
+  },
+  money2: {
+    fontWeight: 'bold',
+    marginLeft: 60,
+    marginRight: 20,
+    fontSize: 11,
     color: '#ffffff',
   },
   icon: {
     color: '#ffffff',
-    width: horizontalScale(0),
-    height: verticalScale(0),
+    width: horizontalScale(1),
+    height: verticalScale(1),
     marginTop: verticalScale(4),
     marginLeft: horizontalScale(4),
-    resizeMode: 'contain',
+  },
+  sales: {
+    fontWeight: 'normal',
+    marginLeft: 75,
+    marginTop: 25,
+    fontSize: 12,
+    color: '#ffffff',
+  },
+  day: {
+    fontWeight: 'normal',
+    marginLeft: 60,
+    marginRight: 20,
+    fontSize: 9,
+    textAlign: 'center',
+    color: '#ffffff',
   },
 });

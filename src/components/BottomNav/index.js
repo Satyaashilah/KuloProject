@@ -1,9 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
 import * as IconBrand from '@fortawesome/free-brands-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {
+  getFocusedRouteNameFromRoute,
+  NavigationContainer,
+  TabActions,
+} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {iconName} from '@fortawesome/free-solid-svg-icons/faChevronRight';
+import {Home} from '../../Screens';
 
 const iconListSolid = Object.keys(IconsSolid)
   .filter(key => key !== 'fas' && key !== 'prefix')
@@ -15,57 +23,44 @@ let iconListBrand = Object.keys(IconBrand)
 
 library.add(...iconListBrand, ...iconListSolid);
 
+const Tab = createBottomTabNavigator();
 const index = () => {
-    return (
-    
-        <View style={styles.kotak}>
-            <View style={styles.itemRow}>
-                <View style={styles.itemCol}>
-                    <FontAwesomeIcon icon={['fas', 'home']} />
-                    <Text>Pesanan</Text>
-                </View>
-                <View style={styles.itemCol}>
-                    <FontAwesomeIcon icon={['fas', 'wallet']} />
-                    <Text>Payment</Text>
-                </View>
-                <View style={styles.itemCol}>
-                    <FontAwesomeIcon icon={['fas', 'inbox']} />
-                    <Text>Inbox</Text>
-                </View>
-                <View style={styles.itemCol}>
-                    <FontAwesomeIcon icon={['fas', 'user']} />
-                    <Text>Account</Text>
-                </View>
-            </View>
-        </View>
-    )
-}
+  const homeName = 'Home';
+  const paymentName = 'Payment';
+  const inboxName = 'Inbox';
+  const accountName = 'Account';
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name={homeName} component={Home} />
+    </Tab.Navigator>
+  );
+};
 
-export default index
+export default index;
 
 const styles = StyleSheet.create({
-    root:{
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    kotak: {
-        justifyContent: 'center',
-        position: 'absolute',
-        bottom: 0,
-        height: '10%',
-        width: '90%',
-        borderRadius: 3,
-        backgroundColor: '#5C93FF',
-        marginTop: '5%',
-        marginHorizontal: '4%',
-    },
-    itemCol:{
-        flexDirection: 'column',
-    },
-    itemRow:{
-        flexDirection:'row',
-    },
-    icon:{
-        color: '#FFFFFF',
-    },
-})
+  root: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  kotak: {
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+    height: '10%',
+    width: '90%',
+    borderRadius: 3,
+    backgroundColor: '#5C93FF',
+    marginTop: '5%',
+    marginHorizontal: '4%',
+  },
+  itemCol: {
+    flexDirection: 'column',
+  },
+  itemRow: {
+    flexDirection: 'row',
+  },
+  icon: {
+    color: '#FFFFFF',
+  },
+});

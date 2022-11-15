@@ -1,18 +1,28 @@
 import React from 'react';
-import Component from './../../components';
+import Component from '../../components';
+import {StyleSheet, View} from 'react-native';
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from '../../Theme/Metric';
 
-const index = () => {
+const Home = () => {
   return (
-    <View style={{flexDirection: 'column'}}>
-      <Component.HomeComp.Banner />
-      <Component.HomeComp.SaldoKecil />
-      <Component.HomeComp.Fitur />
-      <Component.HomeComp.CardCarousel />
+    <View>
+      <View style={styles.itemCol}>
+        <Component.HomeComp.Banner />
+        <Component.HomeComp.SaldoKecil />
+        <Component.HomeComp.Saldo />
+        <Component.HomeComp.Orders />
+        <Component.HomeComp.Fitur />
+        <Component.HomeComp.CardCarousel />
+      </View>
     </View>
   );
 };
 
-export default index;
+export default Home;
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
@@ -34,7 +44,7 @@ const styles = StyleSheet.create({
   itemCol: {
     flexDirection: 'column',
     marginVertical: verticalScale(20),
-    marginHorizontal: horizontalScale(20),
+    marginHorizontal: horizontalScale(1),
   },
   itemRow: {
     flexDirection: 'row',

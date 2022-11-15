@@ -1,10 +1,13 @@
-import SplashScreen from './SplashScreen/index';
+import SplashScreen from './SplashScreen';
 import Login from './Login';
-import Register from './Register/index';
+import Register from './Register';
 import ConfirmEmail from './ConfirmEmail';
 import ForgotPassword from './ForgotPassword';
 import NewPassword from './NewPassword';
-import Home from './Home';
+import Home from './HomeScreen';
+import Payment from './Payment';
+import Inbox from './Inbox';
+import Account from './Account';
 
 export {SplashScreen};
 export {Login};
@@ -13,3 +16,6 @@ export {ConfirmEmail};
 export {ForgotPassword};
 export {NewPassword};
 export {Home};
+export {Payment};
+export {Inbox};
+export {Account};
