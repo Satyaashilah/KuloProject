@@ -9,14 +9,16 @@ import {
 
 const Home = () => {
   return (
-    <View>
-      <View style={styles.itemCol}>
-        <Component.HomeComp.Banner />
-        <Component.HomeComp.SaldoKecil />
-        <Component.HomeComp.Saldo />
-        <Component.HomeComp.Orders />
-        <Component.HomeComp.Fitur />
-        <Component.HomeComp.CardCarousel />
+    <View style={styles.root}>
+      <View style={styles.root2}>
+        <View style={styles.itemCol}>
+          <Component.HomeComp.Banner />
+          <Component.HomeComp.SaldoKecil />
+          <Component.HomeComp.Saldo />
+          <Component.HomeComp.Orders />
+          <Component.HomeComp.Fitur />
+          <Component.HomeComp.CardCarousel />
+        </View>
       </View>
     </View>
   );
@@ -25,26 +27,15 @@ const Home = () => {
 export default Home;
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    backgroundColor: '#ffffff',
-    paddingVertical: verticalScale(15),
-    paddingHorizontal: horizontalScale(50),
+    backgroundColor: '#FFFFFF',
   },
   root2: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffff',
-  },
-  text: {
-    fontSize: verticalScale(20),
-    fontWeight: 'bold',
+    marginVertical: verticalScale(20),
+    marginHorizontal: horizontalScale(1),
+    paddingHorizontal: horizontalScale(25),
   },
   itemCol: {
     flexDirection: 'column',
-    marginVertical: verticalScale(20),
-    marginHorizontal: horizontalScale(1),
   },
   itemRow: {
     flexDirection: 'row',

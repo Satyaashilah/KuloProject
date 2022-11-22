@@ -20,17 +20,12 @@ let iconListBrand = Object.keys(IconBrand)
 library.add(...iconListBrand, ...iconListSolid);
 const index = () => {
   return (
-    <View style={styles.root}>
-      <View style={styles.kotak1}>
-        <View style={{flexDirection: 'row'}}>
-          <FontAwesomeIcon icon={['fas', 'wallet']} style={styles.walletkcl} />
-          <Text style={styles.rp}>Rp</Text>
-          <Text style={styles.money}>10,000.00</Text>
-          <FontAwesomeIcon
-            icon={['fas', 'chevron-right']}
-            style={styles.icon}
-          />
-        </View>
+    <View style={styles.kotak1}>
+      <View style={{flexDirection: 'row'}}>
+        <FontAwesomeIcon icon={['fas', 'wallet']} style={styles.walletkcl} />
+        <Text style={styles.rp}>Rp</Text>
+        <Text style={styles.money}>10,000.00</Text>
+        <FontAwesomeIcon icon={['fas', 'chevron-right']} style={styles.icon} />
       </View>
     </View>
   );
@@ -39,9 +34,6 @@ const index = () => {
 export default index;
 
 const styles = StyleSheet.create({
-  root: {
-    paddingHorizontal: horizontalScale(25),
-  },
   kotak1: {
     height: verticalScale(25),
     width: horizontalScale(120),

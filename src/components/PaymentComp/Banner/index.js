@@ -22,18 +22,22 @@ library.add(...iconListBrand, ...iconListSolid);
 const Banner = () => {
   return (
     <View style={styles.root}>
-      <FontAwesomeIcon icon={['fas', 'receipt']} style={styles.icon} />
-      <FontAwesomeIcon icon={['fas', 'qrcode']} style={styles.icon} />
-      <Text>COBA</Text>
+      <View style={styles.root3}>
+        <Text style={styles.title}>Payment</Text>
+        <View style={styles.iconCont}>
+          <FontAwesomeIcon icon={['fas', 'receipt']} style={styles.icon} />
+          <FontAwesomeIcon icon={['fas', 'qrcode']} style={styles.icon} />
+        </View>
+      </View>
     </View>
   );
 };
 export default Banner;
 const styles = StyleSheet.create({
-  icon: {
-    color: '#F1592A',
-  },
   root: {
+    // paddingHorizontal: horizontalScale(25),
+  },
+  root3: {
     // alignItems: 'center',
     // justifyContent: 'center',
     // flex: 1,
@@ -46,5 +50,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
+  },
+  title: {
+    flex: 1,
+    fontSize: moderateScale(20),
+    color: '#F1592A',
+    fontWeight: 'bold',
+  },
+  icon: {
+    color: '#F1592A',
+    paddingVertical: verticalScale(15),
+  },
+  iconCont: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    flex: 0.2,
   },
 });

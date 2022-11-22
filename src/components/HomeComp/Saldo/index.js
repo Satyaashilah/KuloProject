@@ -20,31 +20,26 @@ let iconListBrand = Object.keys(IconBrand)
 library.add(...iconListBrand, ...iconListSolid);
 const index = () => {
   return (
-    <View style={styles.root}>
-      <TouchableOpacity
-        style={styles.kotak1}
-        onPress={() => this.props.navigation.navigate('Payment')}>
-        <Text style={styles.sales}>Total Sales Today</Text>
-        <View style={{flexDirection: 'row'}}>
-          <FontAwesomeIcon icon={['fas', 'wallet']} style={styles.walletkcl} />
-          <Text style={styles.rp}>Rp</Text>
-          <Text style={styles.money}>2,500.00</Text>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.day}>Yesterday</Text>
-            <Text style={styles.money2}>Rp 3,000.00</Text>
-          </View>
+    <TouchableOpacity
+      style={styles.kotak1}
+      onPress={() => this.props.navigation.navigate('Payment')}>
+      <Text style={styles.sales}>Total Sales Today</Text>
+      <View style={{flexDirection: 'row'}}>
+        <FontAwesomeIcon icon={['fas', 'wallet']} style={styles.walletkcl} />
+        <Text style={styles.rp}>Rp</Text>
+        <Text style={styles.money}>2,500.00</Text>
+        <View style={{flexDirection: 'column'}}>
+          <Text style={styles.day}>Yesterday</Text>
+          <Text style={styles.money2}>Rp 3,000.00</Text>
         </View>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 export default index;
 
 const styles = StyleSheet.create({
-  root: {
-    paddingHorizontal: horizontalScale(25),
-  },
   kotak1: {
     height: 'auto',
     width: 'auto',

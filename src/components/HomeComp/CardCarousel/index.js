@@ -1,6 +1,5 @@
 import {Component} from 'react';
 import * as React from 'react';
-
 import {
   View,
   Text,
@@ -27,7 +26,7 @@ class CardCarousel extends Component {
           text: 'Text',
           Image: require('./../../../images/unsplash1.jpg'),
           navigate: () => {
-            props.navigation.push('Login');
+            this.props.navigation.push('Login');
           },
         },
         {
@@ -35,7 +34,7 @@ class CardCarousel extends Component {
           text: 'Text',
           Image: require('./../../../images/unsplash2.jpg'),
           navigate: () => {
-            props.navigation.push('Login');
+            this.props.navigation.push('Login');
           },
         },
         {
@@ -43,7 +42,7 @@ class CardCarousel extends Component {
           text: 'Text',
           Image: require('./../../../images/unsplash3.jpg'),
           navigate: () => {
-            props.navigation.push('Login');
+            this.props.navigation.push('Login');
           },
         },
         {
@@ -51,7 +50,7 @@ class CardCarousel extends Component {
           text: 'Text',
           Image: require('./../../../images/unsplash4.jpg'),
           navigate: () => {
-            props.navigation.push('Login');
+            this.props.navigation.push('Login');
           },
         },
         {
@@ -59,7 +58,7 @@ class CardCarousel extends Component {
           text: 'Text 5',
           Image: require('./../../../images/unsplash5.jpg'),
           navigate: () => {
-            props.navigation.push('Login');
+            this.props.navigation.push('Login');
           },
         },
       ],
@@ -114,7 +113,7 @@ class CardCarousel extends Component {
   }
 }
 
-//
+// https://www.youtube.com/watch?v=-3FCvrkxgc4
 
 const style = StyleSheet.create({
   container: {

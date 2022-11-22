@@ -8,14 +8,12 @@ import {
 
 const index = () => {
   return (
-    <View style={styles.root}>
-      <View style={{flexDirection: 'row'}}>
-        <Image
-          source={require('./../../../images/kurirlokal.png')}
-          style={styles.logo}
-        />
-        <Text style={styles.merchant}>Merchant</Text>
-      </View>
+    <View style={{flexDirection: 'row'}}>
+      <Image
+        source={require('./../../../images/kurirlokal.png')}
+        style={styles.logo}
+      />
+      <Text style={styles.merchant}>Merchant</Text>
     </View>
   );
 };
@@ -23,9 +21,6 @@ const index = () => {
 export default index;
 
 const styles = StyleSheet.create({
-  root: {
-    paddingHorizontal: horizontalScale(25),
-  },
   logo: {
     width: horizontalScale(70),
     height: verticalScale(50),

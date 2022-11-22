@@ -24,13 +24,7 @@ const index = () => {
       style={{
         padding: verticalScale(5),
       }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignSelf: 'flex-start',
-          flexWrap: 'wrap',
-        }}>
+      <View style={styles.root}>
         <TouchableOpacity>
           <View style={styles.kotak3}>
             <View>
@@ -114,6 +108,12 @@ const index = () => {
 export default index;
 
 const styles = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'flex-start',
+    flexWrap: 'wrap',
+  },
   kotak3: {
     height: verticalScale(60),
     width: horizontalScale(60),
@@ -121,20 +121,17 @@ const styles = StyleSheet.create({
     borderColor: '#DEDEDE',
     borderWidth: moderateScale(1.5),
     borderRadius: moderateScale(8),
-    marginHorizontal: horizontalScale(20),
   },
 
   fiturHome: {
     width: horizontalScale(27),
     height: verticalScale(27),
-    marginHorizontal: horizontalScale(15),
     marginVertical: verticalScale(15),
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignSelf: 'center',
     color: '#F1592A',
   },
   fiturHomeTxt: {
-    marginHorizontal: horizontalScale(15),
     height: verticalScale(40),
     width: horizontalScale(60),
 
